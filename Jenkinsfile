@@ -9,11 +9,7 @@ pipeline {
                 }
             }
         }
-		stage('User Input') {
-			steps {
-			input ('Do you want to proceed?')
-			}
-		}
+	
         stage('Build Customer app code') {
             steps {
                 script {
