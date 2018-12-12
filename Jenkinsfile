@@ -25,6 +25,7 @@ pipeline {
                         sh "exit 1"
                     }
                     echo "RESULT: ${currentBuild.result}"
+		    echo "Done...."
                 }
             }
         }
