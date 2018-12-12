@@ -33,36 +33,6 @@ pipeline {
             }
         }
 
-		stage('Testing'){
-			parallel {
-				stage ('Unit Testing'){
-					steps {
-						script {
-							echo "Unit Testing"
-							}
-					}
-				}
-				stage('Automated Test') {
-					steps {
-						script {
-							sshagent(credentials: ['RemoteCredentials']) {
-							  def JAVA_HOME =tool 'JDK_1.8'
-								def mvnHome = tool 'maven-3'
-								try {
-									sh "${mvnHome}/apache-maven-3.5.0/bin/mvn test"
-									stash 'working-copy'
-									currentBuild.result = 'SUCCESS'
-									} catch (Exception err) {
-										currentBuild.result = 'FAILURE'
-										sh "exit 1"
-									}
-								echo "RESULT: ${currentBuild.result}"
-									}
-								}
-							}
-						}
-					}
-				}
-
-		}   
+		
+   }   
 }
