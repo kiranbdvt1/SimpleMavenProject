@@ -3,7 +3,8 @@ WORKDIR /usr/src
 RUN git clone https://github.com/kiranbdvt1/SimpleMavenProject.git
 FROM maven:3.5-jdk-8-alpine
 WORKDIR /usr/src
-COPY --from=0 /app/simple-Maven_Proj/app
+COPY --from=0 /usr/src/simple-Maven_Proj/app
+
 RUN mvn install
 FROM openjdk:8-jre-alpine
 WORKDIR /usr/src
